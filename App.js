@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 
-import { StyleSheet,  View, TextInput, ImageBackground, Text, Button, } from 'react-native';
+import { StyleSheet,  View, TextInput, ImageBackground, Text, Button, country } from 'react-native';
 
 const api = {
   key: "af3904bcfb9954b533100c6413793863",
@@ -54,7 +54,9 @@ export default function App() {
               value={query}
               />
               <Button title='поиск' onPress={search}></Button>
-                
+                <View style={styles.textview}>
+                <Text style={styles.text}>{weather.name}</Text>                
+                </View> 
           </ImageBackground>  
         </View>
         
@@ -76,6 +78,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text:{
+    textAlign: 'center',
+    top: 200,
+    color:'black',
+    shadowColor: "rgb(120,124,255)",
+    shadowOffset: {width:1,height: 3},
+    shadowOpacity: 3,
+    shadowRadius: 10,
+    fontSize: 20,
+    color: "rgb(120,124,255)"
+  },
+  textview:{
+    bottom: 400
+  }
  
   
 });
