@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
-import { StyleSheet,  View, TextInput, ImageBackground, Text } from 'react-native';
+
+import { StyleSheet,  View, TextInput, ImageBackground, Text, Button, } from 'react-native';
 
 const api = {
   key: "af3904bcfb9954b533100c6413793863",
@@ -10,16 +11,15 @@ export default function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
 
-  const search = evt => {
-    if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+  const search = () => {
+     return fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
         .then(res => res.json())
         .then(result => {
           setWeather(result);
           setQuery('');
           console.log(result);
         });
-    }
+    
   }
 
   const dateBuilder = (d) => {
@@ -50,12 +50,12 @@ export default function App() {
               textAlign: "center",
               }}
               placeholder="Search..."
-              onChange={e => setQuery(e.target.value)}
+              onChangeText={setQuery}
               value={query}
-              onKeyPress={()=>search}
               />
-              <Text></Text>
-          </ImageBackground>
+              <Button title='поиск' onPress={search}></Button>
+                
+          </ImageBackground>  
         </View>
         
       
@@ -63,6 +63,8 @@ export default function App() {
          
     
   );
+  
+
 }
 
 
