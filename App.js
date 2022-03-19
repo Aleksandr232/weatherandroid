@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 
-import { StyleSheet,  View, TextInput, ImageBackground, Text, Button, country } from 'react-native';
+import { StyleSheet,  View, TextInput, ImageBackground, Text, Button} from 'react-native';
 
 const api = {
   key: "af3904bcfb9954b533100c6413793863",
@@ -10,8 +10,9 @@ const api = {
 export default function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
+  
 
-  const search = () => {
+  const search =  () => {
      return fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
         .then(res => res.json())
         .then(result => {
@@ -37,7 +38,8 @@ export default function App() {
   const imge ={uri :'https://raw.githubusercontent.com/Aleksandr232/weather/master/src/assets/cold-bg.jpg'}
 
   return (
-        <View style={styles.container}  >
+        <View style={styles.container}>
+          
           <ImageBackground source={imge} style={{width: '100%', height: '100%'}}>
               <TextInput
               type="text"
@@ -55,8 +57,8 @@ export default function App() {
               />
               <Button title='поиск' onPress={search}></Button>
                 <View style={styles.textview}>
-                <Text style={styles.text}>{weather.name}</Text>                
-                </View> 
+                <Text style={styles.text}>{weather.name},{weather.sys?.country},{weather.main?.temp}</Text>     
+                </View>
           </ImageBackground>  
         </View>
         
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
   },
   textview:{
     bottom: 400
-  }
- 
+  },
+  
   
 });
