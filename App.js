@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 
-import { StyleSheet,  View, TextInput, ImageBackground, Text, Button} from 'react-native';
+import { StyleSheet,  View, TextInput, ImageBackground, Text, Button, LogBox} from 'react-native';
 
 const api = {
   key: "af3904bcfb9954b533100c6413793863",
@@ -50,6 +50,7 @@ export default function App() {
               fontSize: 20,
               fontWeight: "bold",
               textAlign: "center",
+              marginTop: 200
               }}
               placeholder="Search..."
               onChangeText={setQuery}
@@ -57,7 +58,7 @@ export default function App() {
               />
               <Button title='поиск' onPress={search}></Button>
                 <View style={styles.textview}>
-                <Text style={styles.text}>{weather.name},{weather.sys?.country},{weather.main?.temp}</Text>     
+                <Text style={styles.text}>{weather.name}, {weather.sys?.country}, {weather.main?.temp}</Text>     
                 </View>
           </ImageBackground>  
         </View>
@@ -89,10 +90,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 3,
     shadowRadius: 10,
     fontSize: 20,
-    color: "rgb(120,124,255)"
+    color: "rgb(120,124,255)",
+    padding: 23
   },
   textview:{
-    bottom: 400
+    bottom: 400,
+    textAlign: 'center',
+    width: 300,
+    left: 50
   },
   
   
