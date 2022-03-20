@@ -39,7 +39,6 @@ export default function App() {
 
   return (
         <View style={styles.container}>
-          
           <ImageBackground source={imge} style={{width: '100%', height: '100%'}}>
               <TextInput
               type="text"
@@ -50,15 +49,29 @@ export default function App() {
               fontSize: 20,
               fontWeight: "bold",
               textAlign: "center",
-              marginTop: 200
+              bottom: 20,
+              right:100,            
               }}
               placeholder="Search..."
               onChangeText={setQuery}
               value={query}
               />
-              <Button title='поиск' onPress={search}></Button>
+                <Button style={{
+                  flex: 2,
+                  width: 20,
+                  height: 100,
+                  fontSize: 20,
+                  fontWeight: "bold",
+                  textAlign: "center",
+                  bottom: 20,
+                  right:100, 
+                }}
+                    title='поиск'
+                    onPress={search}>
+                </Button>
                 <View style={styles.textview}>
-                <Text style={styles.text}>{weather.name}, {weather.sys?.country}, {weather.main?.temp}</Text>     
+                <Text style={styles.text}>{weather.name},  {weather.sys?.country},  {Math.round(weather.main?.temp)}°c</Text>     
+                <Text style={styles.text}>{dateBuilder(new Date())}</Text>     
                 </View>
           </ImageBackground>  
         </View>
@@ -82,23 +95,34 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text:{
+    bottom: 150,
     textAlign: 'center',
-    top: 200,
     color:'black',
     shadowColor: "rgb(120,124,255)",
     shadowOffset: {width:1,height: 3},
     shadowOpacity: 3,
     shadowRadius: 10,
-    fontSize: 20,
+    fontSize: 30,
     color: "rgb(120,124,255)",
     padding: 23
   },
   textview:{
-    bottom: 400,
     textAlign: 'center',
     width: 300,
     left: 50
   },
+  button:{
+    flex: 1,
+    width: 100,
+    left: 270,
+    color: "black",
+    height: 100,
+    fontSize: 20,
+    
+  }              
+              
+  
+  
   
   
 });
