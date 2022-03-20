@@ -43,32 +43,21 @@ export default function App() {
               <TextInput
               type="text"
               style={{ color: "black",
-              flex: 1,
+              top: 10,
               width:'100%',
               height: 100,
               fontSize: 20,
               fontWeight: "bold",
               textAlign: "center",
-              bottom: 20,
-              right:100,            
+              right:100,          
               }}
               placeholder="Search..."
               onChangeText={setQuery}
               value={query}
               />
-                <Button style={{
-                  flex: 2,
-                  width: 20,
-                  height: 100,
-                  fontSize: 20,
-                  fontWeight: "bold",
-                  textAlign: "center",
-                  bottom: 20,
-                  right:100, 
-                }}
-                    title='поиск'
-                    onPress={search}>
-                </Button>
+                <View style={styles.button}>
+                  <Button  title='поиск' onPress={search}></Button>
+                </View>
                 <View style={styles.textview}>
                 <Text style={styles.text}>{weather.name},  {weather.sys?.country},  {Math.round(weather.main?.temp)}°c</Text>     
                 <Text style={styles.text}>{dateBuilder(new Date())}</Text>     
@@ -95,14 +84,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text:{
-    bottom: 150,
+    bottom: -20,
     textAlign: 'center',
     color:'black',
     shadowColor: "rgb(120,124,255)",
     shadowOffset: {width:1,height: 3},
     shadowOpacity: 3,
     shadowRadius: 10,
-    fontSize: 30,
+    fontSize: 35,
     color: "rgb(120,124,255)",
     padding: 23
   },
@@ -112,7 +101,7 @@ const styles = StyleSheet.create({
     left: 50
   },
   button:{
-    flex: 1,
+    bottom: 60,
     width: 100,
     left: 270,
     color: "black",
